@@ -61,4 +61,13 @@ class QuoteController extends Controller
         return redirect()->route('quote.index')->with(['success' => 'Data Berhasil Diubah!']);
 
     }
+
+    public function destroy(Post $quote)
+    {
+        //delete post
+        $quote->delete();
+
+        //redirect to index
+        return redirect()->route('quote.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
 }
