@@ -38,7 +38,7 @@ class QuoteController extends Controller
     }
 
     public function edit(Post $quote){
-        
+
         return view('quote.edit', compact('quote'));
     }
 
@@ -73,17 +73,17 @@ class QuoteController extends Controller
 
     public function search(Request $request)
     {
-        if ($request->search) 
+        if ($request->search)
         {
-        $keyword = $request->search;
-        $quote = Post::where('quote', 'like', '%' . $keyword . '%')
-        ->orWhere('author', 'like', '%' . $keyword . '%')
-        ->orWhere('kategori', 'like', '%' . $keyword . '%')
+        // $keyword = $request->search;
+        $quote = Post::where('quote', 'like', '%' . $request->search . '%')
+        ->orWhere('author', 'like', '%' . $request->search . '%')
+        ->orWhere('kategori', 'like', '%' . $request->search . '%')
         ->paginate(5);
         } else {
             $quote = Post::all();
         }
-        return view('searchbar', compact('quote'));
+        return view('view', compact('quote'));
                 // $search = $request->search;
         // $quote = Post::table('quotes')
         //     ->where('quote', 'like=', "%" . $search . "%")

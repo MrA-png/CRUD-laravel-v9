@@ -23,14 +23,15 @@
     <div class="container">
         <div class="row height d-flex justify-content-center align-items-center">
             <div class="col-md-6">
-                <div class="form">
+                {{-- <div class="form">
                     <i class="fa fa-search"></i>
                     <H1>AIBAD</H1>
                     <H2>Assistant Information Based on Agile Development</H2>
                     <form action="{{ route('search') }}" method="GET">
                         <input type="text" class="form-control" name="cari" value="{{ old('search') }}" placeholder="Masukkan Keyword Agile..." value="">
                         <span class="left-pan"><i class="fa fa-microphone"></i></span>
-                    </form>
+                    </form> --}}
+                    {{-- @method("POST") --}}
                     <div class="container">
                         <table class="table table-bordered">
                             <tbody>
@@ -39,7 +40,6 @@
                                         <td>{{ $qt->quote }}</td>
                                         <td>{{ $qt->author }}</td>
                                         <td>{{ $qt->kategori }}</td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -50,5 +50,4 @@
         </div>
     </div>
 </body>
-
 </html>

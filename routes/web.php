@@ -13,3 +13,5 @@ use App\Http\Controllers\QuoteController;
 
 Route::resource('/', \App\Http\Controllers\QuoteController::class);
 Route::get('/search', [QuoteController::class,'search'])->name('search');
+
+Route::get('/index', [QuoteController::class, 'index'])->name('index');
