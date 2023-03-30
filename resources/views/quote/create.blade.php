@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <form action="{{ route('quote.store') }}" method="POST">
+                        <form action="{{ route('store') }}" method="POST">
                         
                             @csrf
 

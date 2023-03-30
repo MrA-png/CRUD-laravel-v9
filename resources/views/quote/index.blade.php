@@ -15,7 +15,13 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <a href="{{ route('quote.create') }}" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
+                    
+                        <a href="{{ route('create') }}" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
+                        <a href="{{ route('search') }}" class="btn btn-md btn-success mb-3">cari</a>
+                        <form action="{{ route('search') }}" method="GET">
+                            <input type="text" class="form-control" name="cari" value="{{ old('search') }}" placeholder="Masukkan Keyword Agile..." value="">
+                            <span class="left-pan"><i class="fa fa-microphone"></i></span>
+                        </form>
                         <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -32,8 +38,8 @@
                                     <td>{{ $quote->author }}</td>
                                     <td>{{ $quote->kategori }}</td>
                                     <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('quote.destroy', $quote->id) }}" method="POST">
-                                            <a href="{{ route('quote.edit', $quote->id) }}" class="btn btn-sm btn-primary">EDIT</a>
+                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('destroy', $quote->id) }}" method="POST">
+                                            <a href="{{ route('edit', $quote->id) }}" class="btn btn-sm btn-primary">EDIT</a>
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>

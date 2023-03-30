@@ -34,7 +34,7 @@ class QuoteController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('quote.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('index')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
     public function edit(Post $quote){
@@ -58,7 +58,7 @@ class QuoteController extends Controller
         ]);
 
         //redirect to index
-        return redirect()->route('quote.index')->with(['success' => 'Data Berhasil Diubah!']);
+        return redirect()->route('index')->with(['success' => 'Data Berhasil Diubah!']);
 
     }
 
@@ -68,6 +68,26 @@ class QuoteController extends Controller
         $quote->delete();
 
         //redirect to index
-        return redirect()->route('quote.index')->with(['success' => 'Data Berhasil Dihapus!']);
+        return redirect()->route('index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->search) 
+        {
+        $keyword = $request->search;
+        $quote = Post::where('quote', 'like', '%' . $keyword . '%')
+        ->orWhere('author', 'like', '%' . $keyword . '%')
+        ->orWhere('kategori', 'like', '%' . $keyword . '%')
+        ->paginate(5);
+        } else {
+            $quote = Post::all();
+        }
+        return view('searchbar', compact('quote'));
+                // $search = $request->search;
+        // $quote = Post::table('quotes')
+        //     ->where('quote', 'like=', "%" . $search . "%")
+        //     ->paginate(6);
+        // return view('quote.index', compact('quote'));
     }
 }
