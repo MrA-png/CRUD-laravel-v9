@@ -78,7 +78,7 @@ class QuoteController extends Controller
         // $keyword = $request->search;
         $quote = Post::where('quote', 'like', '%' . $request->search . '%')
         ->orWhere('author', 'like', '%' . $request->search . '%')
-        ->orWhere('kategori', 'like', '%' . $request->search . '%')
+        ->orWhere('kategori', 'like', '%' . $request->search . '%');
         ->paginate(5);
         } else {
             $quote = Post::all();
